@@ -567,7 +567,7 @@ Adapter.extend({
     }
 
     if (config.data) {
-      requestConfig.body = utils.toJson(config.data)
+      requestConfig.body = (window.FormData && config.data instanceof window.FormData) ? config.data : utils.toJson(config.data)
     }
 
     return fetch(buildUrl(config.url, config.params), requestConfig)
